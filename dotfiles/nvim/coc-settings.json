@@ -1,0 +1,22 @@
+  {
+    "suggest.enablePreview": true,
+    "signature.enable": true,
+    "languageserver": {
+      "clangd": {
+        "command": "clangd",
+        "filetypes": ["c", "cpp", "cc", "hpp", "h", "tpp", "objc", "objcpp"],
+        "rootPatterns": ["compile_commands.json", "compile_flags.txt", ".git/"]
+      },
+      "python": {
+        "command": "pyright-langserver",
+        "args": ["--stdio"],
+        "filetypes": ["python"],
+        "rootPatterns": ["pyproject.toml", "setup.py", "requirements.txt", ".git/"]
+      }
+    },
+    {
+      "pyright.inlayHints.functionReturnTypes": false,
+      "pyright.inlayHints.parameterTypes": false,
+      "pyright.inlayHints.variableTypes": false
+    }
+  }
