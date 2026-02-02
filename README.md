@@ -1,7 +1,5 @@
 # Nixos config
 
-This is my personal NixOS configuration.
-
 ## Installation
 
 To install it, you can use on of the following commands:

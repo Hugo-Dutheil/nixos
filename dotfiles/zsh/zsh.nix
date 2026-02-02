@@ -13,7 +13,7 @@
         cd ${settings.configPath} && nvim -c "e configuration.nix" -c "tabnew" -c "e flake.nix" -c "tabnew" -c "e home.nix"
       '';
       rebuild =
-        "sh ${settings.configPath}/scripts/post-rebuild.sh && sudo nixos-rebuild switch --flake /home/${settings.username}/nixos#default --impure && sh ${settings.configPath}/scripts/post-rebuild.sh";
+        "sudo sh ${settings.configPath}/scripts/pre-rebuild.sh && sudo nixos-rebuild switch --flake /home/${settings.username}/nixos#default --impure && sh ${settings.configPath}/scripts/post-rebuild.sh";
       gss = "git status";
       re = "source ~/.zshrc";
       zshconfig = "sudo nvim ~/.zshrc";

@@ -5,4 +5,5 @@ ShellRoot {
     Wallpaper {}
     Bar {}
     AppLauncher {}
+    Lockscreen {}
 }

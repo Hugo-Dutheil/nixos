@@ -16,8 +16,15 @@ Singleton {
     property bool wifiEnabled: true
     property bool scanning: false
     property bool startupFinished: false
+    property real connectionSpeed: 0.
 
     reloadableId: "network"
+
+
+    function updateConnectionSpeed(): void {
+      updateConnectionSpeed.running = true;
+      return;
+    }
 
     function isConnectedWifi(): bool {
       getWifiConnectionStatus.running = true;
@@ -28,11 +35,13 @@ Singleton {
     function enableWifi(enabled: bool): void {
         enableWifiProcess.command = ["nmcli", "radio", "wifi", "on"];
         enableWifiProcess.running = true;
+        return;
     }
 
     function disableWifi(enabled: bool): void {
         enableWifiProcess.command = ["nmcli", "radio", "wifi", "off"];
         enableWifiProcess.running = true;
+        return;
     }
 
     function toggleWifi(): void {
@@ -40,19 +49,20 @@ Singleton {
         wifiEnabled = !wifiEnabled;
         enableWifiProcess.command = ["nmcli", "radio", "wifi", cmd];
         enableWifiProcess.running = true;
+        return;
     }
 
     function rescanWifi(): void {
         scanning = true;
         rescanProcess.running = true;
+        return;
     }
 
-    // For now, only supports already known networks
     function connectToNetwork(ssid: string, password: string): void {
-        // TODO: Implement password
         connectProcess.command = ["nmcli", "conn", "up", ssid];
         connectProcess.running = true;
         rescanProcess.running = true;
+        return;
     }
 
     function disconnectFromNetwork(): void {
@@ -61,16 +71,28 @@ Singleton {
             disconnectProcess.running = true;
             rescanProcess.running = true;
         }
+        return;
     }
 
     function getWifiStatus(): void {
         wifiStatusProcess.running = true;
+        return;
+    }
+
+    Process {
+      id: updateConnectionSpeed
+      running: true
+      command: ["cat", "/sys/class/net/wlp2s0/statistics/rx_bytes"]
+      stdout: StdioCollector {
+        onStreamFinished: {
+          connectionSpeed = this.text/1e6 // change to MB/s
+        }
+      }
     }
     
     Process {
       id: getWifiConnectionStatus
       running: true
-//      command: ["nmcli", "-t", "-f", "TYPE,STATE", "device", "|", "grep", "'^wifi:connected'", ">/dev/null", "&&", "echo", "true", "||", "echo", "false"]
       command: ["nmcli", "connection", "show", "--active"]
       stdout: StdioCollector {
         onStreamFinished: {

@@ -48,7 +48,7 @@ services.tlp.enable = false;
 #  Fingerprint reader activation
 
   systemd.services.fprintd = {
-    wantedBy = [ "mult-user.target"];
+    wantedBy = [ "multi-user.target"];
     serviceConfig.Type = "simple";
   };
 
@@ -147,7 +147,6 @@ services.tlp.enable = false;
       unzip
       jq
       gparted
-      nvtopPackages.full
       networkmanagerapplet
       pamtester
       fprintd
@@ -181,6 +180,7 @@ services.tlp.enable = false;
       librewolf
       libreoffice-qt6-fresh
       godot
+      qtcreator
 
       # Env setup
       kitty
@@ -194,7 +194,7 @@ services.tlp.enable = false;
       hyprcursor
       greetd.gtkgreet
       cage
-#       spicetify-cli
+      spicetify-cli
       libsForQt5.okular
 
       # Dev deps
@@ -210,6 +210,7 @@ services.tlp.enable = false;
       gdb
       cgdb
       valgrind
+      qt5.full
 
       # Python libraries
       (python3.withPackages (python-pkgs: with python-pkgs; [

@@ -82,6 +82,7 @@ PanelWindow {
     Paths.Bar {}
 
     ColumnLayout {
+        id: barParts
         spacing: 0
         uniformCellSizes: true
         anchors.fill: parent
