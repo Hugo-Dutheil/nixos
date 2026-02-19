@@ -194,17 +194,18 @@ Item {
     }
 
     Loader {
-        id: popupLoader
-        sourceComponent: Globals.popup === "FloatPopup" ? floatPopupComponent : regularPopupComponent
+      id: popupLoader
+      sourceComponent: Globals.popup === "FloatPopup" ? floatPopupComponent : regularPopupComponent
 
-        property var popup: popupLoader.item
+      property var popup: popupLoader.item
+      property int popupWidth: 320
 
       Component {
         id: regularPopupComponent
         Popup {
           id: popup
           ref: bar
-          popupWidth: 360
+          popupWidth: popupLoader.popupWidth
           popupHeight: root.popupHeight
           yPos: root.popupYpos
           name: "Battery"
@@ -213,7 +214,7 @@ Item {
             anchors.fill: parent
             color: "transparent"
             BatteryPopup {
-              popupWidth: 360
+              popupWidth: popupLoader.popupWidth
               moduleRef: batteryContent
             }
           }
@@ -225,7 +226,7 @@ Item {
         FloatPopup {
           id: popup
           ref: bar
-          popupWidth: 360
+          popupWidth: popupLoader.popupWidth
           popupHeight: root.popupHeight
           yPos: root.popupYpos
           name: "Battery"
@@ -234,7 +235,7 @@ Item {
             anchors.fill: parent
             color: "transparent"
             BatteryPopup {
-              popupWidth: 360
+              popupWidth: popupLoader.popupWidth
               moduleRef: batteryContent
           }
         }

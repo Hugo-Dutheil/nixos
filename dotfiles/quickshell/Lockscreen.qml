@@ -18,9 +18,9 @@ PanelWindow {
   Component.onCompleted: show()
 
   function show() {
-    root.visible = true
-    root.state = "visible"
-    localFocusGrab.active = true;
+//    root.visible = true
+//    root.state = "visible"
+//    localFocusGrab.active = true;
   }
 
   function hide() {
@@ -32,6 +32,7 @@ PanelWindow {
   FocusScope{
     focus: true
     Keys.onPressed: event => {
+      console.log("Key was pressend: ", event.key)
       if (event.key === Qt.Key_Escape){
         hide();
       }

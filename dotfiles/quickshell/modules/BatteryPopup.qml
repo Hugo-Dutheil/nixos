@@ -65,6 +65,7 @@ Item {
 
           Item{
             id: hypridle
+            Layout.alignment: Qt.AlignLeft | Qt.AlignTop
             readonly property int size: 60
             implicitHeight: size
             implicitWidth: size
@@ -84,7 +85,7 @@ Item {
               hypridle.hypridleState = !hypridle.hypridleState;
             }
             Rectangle  {
-              id: container
+              id: caffeine_button
               anchors.fill:parent
               radius: Globals.radius
               color: hypridle.rectColor

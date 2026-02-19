@@ -17,7 +17,7 @@ Singleton {
     readonly property string terminal: "ghostty"
     readonly property string browser: "zen-twilight"
 
-    readonly property var theme: Themes.galaxy
+    readonly property var theme: Themes.forest
 
     readonly property var fonts: QtObject {
         readonly property int huge: 28

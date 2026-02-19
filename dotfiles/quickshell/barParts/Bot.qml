@@ -15,6 +15,7 @@ BarPart {
     property alias audioPopup: audioContent.popup
     property alias lockPopup: lockContent.popup
     property alias trayPopup: trayContent.popup
+    property alias networkTooltip: wifiContent.tt
 
     function calculatePopupYpos(index, popupHeight) {
         return bar.height - ((2 + index) * Globals.spacing.small + root.sumSizesUntil(index) + (root.moduleSizes[index] / 2) + (popupHeight / 2) + Globals.radius);
@@ -88,11 +89,13 @@ BarPart {
             Layout.fillWidth: true
             property int index: 2
             property int popupHeight: 360
+            property int tooltipHeight: 50
             implicitHeight: root.moduleSizes[index]
             Modules.Network {
                 id: wifiContent
                 popupYpos: root.calculatePopupYpos(wifiModule.index, wifiModule.popupHeight)
                 popupHeight: wifiModule.popupHeight
+                tooltipYpos: root.calculatePopupYpos(wifiModule.index, wifiModule.tooltipHeight)
             }
         }
         Rectangle {

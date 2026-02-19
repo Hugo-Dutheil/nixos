@@ -2,7 +2,8 @@
 
 {
   wayland.windowManager.hyprland.settings.exec-once = [
-    "hyprpaper"
+    "sleep 1"
+    "hyprctl reload"
     "qs -p ~/nixos/dotfiles/quickshell/shell.qml"
     "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
     "hyprctl setcursor Bibata-Modern-Classic 22"

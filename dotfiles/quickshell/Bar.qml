@@ -29,11 +29,15 @@ PanelWindow {
     property int spacing: Globals.spacing.small
     property color popupColor: Globals.theme.background
 
-    property list<var> popups: [top.mediaFs, top.mediaPopup, mid.clockPopup, bot.lockPopup, bot.batteryPopup, bot.wifiPopup, bot.bluetoothPopup, bot.audioPopup, bot.brightnessPopup,]
+    property list<var> popups: [top.mediaFs, top.mediaPopup, mid.clockPopup, bot.lockPopup, bot.batteryPopup, bot.wifiPopup, bot.bluetoothPopup, bot.audioPopup, bot.brightnessPopup]
 
     function collapseAllBut(name) {
+      let nameInPopups = false;
+      for(let i = 0; i < root.popups.length; ++i){
+        nameInPopups = (root.popups[i].name === name || nameInPopups);
+      }
       root.popups.forEach(function (popup) {
-        if (popup.name !== name) {
+        if (popup.name !== name && nameInPopups) {
           popup.collapse();
         }
       });

@@ -67,7 +67,7 @@ services.tlp.enable = false;
   security.pam.enableEcryptfs = false;  # (if relevant)
   services.dbus.enable = true;
 
-  environment.etc."greetd/background.png".source = /home/hdutheil/Pictures/lockBG.png;
+#   environment.etc."greetd/background.png".source = /home/hdutheil/Pictures/lockBG.png;
 
   security.polkit.extraConfig = ''
     polkit.addRule(function(action, subject) {
@@ -181,6 +181,7 @@ services.tlp.enable = false;
       libreoffice-qt6-fresh
       godot
       qtcreator
+      vlc
 
       # Env setup
       kitty
@@ -219,7 +220,10 @@ services.tlp.enable = false;
         matplotlib
         scipy
         numba
+        opencv-python
+        pyside6
         jupyter notebook
+        setuptools
       ]))
     ]; 
 
