@@ -19,14 +19,16 @@ local comment_leaders = {
   tex = "% ",
   mail = "> ",
   vim = '" ',
-  lua = '--',
-  json = '//',
-  jsonc = '//',
+  lua = '-- ',
+  json = '// ',
+  jsonc = '// ',
   yuck = ';;',
-  css = '//',
-  scss = '//',
-  qml = '//',
-  js = '//',
+  css = '/**/',
+  scss = '// ',
+  qml = '// ',
+  javascript = '// ',
+  html = '<!---->',
+  ino = '// ',
 }
 
 -- Function to get the correct comment leader for the current file type
@@ -111,3 +113,10 @@ vim.keymap.set('n', "<C-l>", "<C-w>l", { noremap = true, silent = true })
 
 -- Undo tree
 vim.api.nvim_set_keymap('n', "<leader>u", ":UndotreeToggle<CR>", {noremap = true, silent = false})
+
+--Molten
+vim.keymap.set("n", "<leader>mi", ":MoltenInit<CR>", { silent = true, desc = "Initialize the plugin" })
+vim.keymap.set("n", "<leader>e", ":MoltenEvaluateOperator<CR>", { silent = true, desc = "run operator selection" })
+vim.keymap.set("n", "<leader>rl", ":MoltenEvaluateLine<CR>", { silent = true, desc = "evaluate line" })
+vim.keymap.set("n", "<leader>rr", ":MoltenReevaluateCell<CR>", { silent = true, desc = "re-evaluate cell" })
+vim.keymap.set("v", "<leader>r", ":<C-u>MoltenEvaluateVisual<CR>gv", { silent = true, desc = "evaluate visual selection" })

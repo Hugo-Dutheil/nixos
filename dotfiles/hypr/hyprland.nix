@@ -24,13 +24,13 @@
     xwayland.enable = true;
     systemd.enable = true;
     settings = {
-      monitor = ["eDP-1, 1920x1200@60.00Hz,0x0, 1.0"];
+      monitor = ["eDP-1, 1920x1200@60.00Hz, 0x0, 1.0" "HDMI-A-1, preferred, auto-right, 1.0"];
       "$mainMod" = "SUPER";
       "$scripts" = "${settings.configPath}/scripts";
       "$wallpaper" = "${settings.configPath}/dotfiles/hypr/wallpaper.png";
       "$terminal" = "kitty";
       "$browser" = "zen";
-      "$fileManager" = "nautilus";
+      "$fileManager" = "ranger";
       "$menu" = "wofi";
 
       env = [
@@ -74,7 +74,6 @@
         # Custom animations really fast
         bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
         animation = [
-
           "windows, 1, 7, myBezier, popin 80%"
           "windowsOut, 1, 7, default, popin 70%"
           "border, 1, 10, default"
@@ -82,6 +81,8 @@
           "fade, 1, 6, default"
           "workspaces, 1, 7, default"
           "specialWorkspace, 1, 7, myBezier, slidevert"
+#           "specialWorkspaceIn, 1, 7, myBezier, slide top"
+#           "specialWorkspaceOut, 1, 7, myBezier, slide top"
         ];
       };
       dwindle = {

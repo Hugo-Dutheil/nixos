@@ -119,7 +119,7 @@ services.tlp.enable = false;
   home-manager.backupFileExtension = "backup";
 
   programs.zsh.enable = true;
-
+  
   programs.hyprland.enable = true;
   programs.hyprland.package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 
@@ -153,6 +153,10 @@ services.tlp.enable = false;
       tuned
       cifs-utils
       samba
+      openssl
+      imagemagick  
+      tcpdump
+      socat
 
       # Codecs
       libva
@@ -182,6 +186,10 @@ services.tlp.enable = false;
       godot
       qtcreator
       vlc
+      obsidian
+      jetbrains.datagrip
+      openconnect
+      realvnc-vnc-viewer
 
       # Env setup
       kitty
@@ -197,9 +205,13 @@ services.tlp.enable = false;
       cage
       spicetify-cli
       libsForQt5.okular
+      flameshot
+      grim # dependency for flameshot
+      ranger
 
       # Dev deps
       vscodium
+      sublime-merge
       gcc15
       texlive.combined.scheme-basic
       cmake
@@ -220,10 +232,15 @@ services.tlp.enable = false;
         matplotlib
         scipy
         numba
-        opencv-python
-        pyside6
         jupyter notebook
         setuptools
+        pyjwt
+        python-dotenv
+        cryptography
+        pynvim
+        jupyter_client
+        pnglatex
+        pyperclip
       ]))
     ]; 
 

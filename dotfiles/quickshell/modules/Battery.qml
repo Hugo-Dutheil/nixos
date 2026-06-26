@@ -198,7 +198,7 @@ Item {
       sourceComponent: Globals.popup === "FloatPopup" ? floatPopupComponent : regularPopupComponent
 
       property var popup: popupLoader.item
-      property int popupWidth: 320
+      property int popupWidth: 350
 
       Component {
         id: regularPopupComponent

@@ -8,8 +8,7 @@
       "$mainMod, return, exec, $terminal"
       "$mainMod, backspace, killactive,"
       "$mainMod, B, exec, $browser"
-      "$mainMod, DELETE, exit,"
-      "$mainMod, E, exec, $fileManager"
+      "$mainMod, E, exec, $terminal -e $fileManager"
       "$mainMod, V, togglefloating,"
       "$mainMod, space, exec, $menu"
       "$mainMod, P, pseudo, # dwindle"
@@ -72,13 +71,11 @@
        "$mainMod ALT, U, resizeactive, -100 0"
        "$mainMod ALT, I, resizeactive, 0 -100"
        "$mainMod ALT, O, resizeactive, 0 100"
-       "$mainMod ALT, U, resizeactive, -100 0"
        "$mainMod ALT, P, resizeactive, 100 0"
 
        "$mainMod ALT SHIFT, U, resizeactive, -10 0"
        "$mainMod ALT SHIFT, I, resizeactive, 0 -10"
        "$mainMod ALT SHIFT, O, resizeactive, 0 10"
-       "$mainMod ALT SHIFT, U, resizeactive, -10 0"
        "$mainMod ALT SHIFT, P, resizeactive, 10 0"
 
 # Example special workspace (scratchpad)
@@ -90,6 +87,15 @@
       # Scroll through existing workspaces with mainMod + scroll
       "$mainMod, mouse_down, workspace, e+1"
       "$mainMod, mouse_up, workspace, e-1"
+
+      # Screenshot through flameshot
+      "$mainMode, Print, exec, flameshot gui"
+      "$mainMode SHIFT, Print, exec, flameshot screen"
+      "$mainMode SHIFT, Print A, exec, flameshot gui --accept-on-select"
+
+      # Quickshell global shortcuts
+      "$mainMod, N, global, quickshell:cycleTheme"
+
     ];
     bindl = [
         # Media / audio
@@ -103,7 +109,6 @@
       ",XF86KbdBrightnessUp, exec, $scripts/kbBacklight.sh --inc"
       ",XF86KbdBrightnessDown, exec, $scripts/kbBacklight.sh --dec"
 
-      # Screenshot
     ];
 
     bindm =
